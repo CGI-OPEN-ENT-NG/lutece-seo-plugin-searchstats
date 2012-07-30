@@ -1,0 +1,103 @@
+<div class="content-box" >
+    
+    <h2>#i18n{searchstats.manage_searchstats.pageTitle}</h2>
+    
+    <div class="highlight-box">
+        <form action="jsp/admin/plugins/searchstats/ManageSearchStats.jsp"> 
+            <input type="hidden" name="action" value="refresh" >
+            <input type="checkbox" name="no_result" ${no_result_state}   >
+                   #i18n{searchstats.manage_searchstats.textDisplayNoResultOnly}  &nbsp; &nbsp;
+                   <input class="button" type="submit" value="#i18n{searchstats.manage_searchstats.buttonRefresh}">
+        </form>
+    </div>
+    
+    <form method="post" action="jsp/admin/plugins/searchstats/ManageSearchStats.jsp">
+        <@pagination paginator=paginator_dates />
+        <!-- Number of documents per page selector -->
+	                            #i18n{searchstats.manage_searchstats.labelDatesPerPage} :
+        <select name="items_per_page">
+            <#list [ "10" , "20" , "50" , "100" ] as nb>
+            <#if nb_items_per_page_dates = nb >
+            <option selected="selected" value="${nb}">${nb}</option>
+            <#else>
+            <option value="${nb}">${nb}</option>
+            </#if>
+            </#list>
+        </select>
+        
+        <input type="submit" class="button" value="#i18n{document.manage_documents.buttonItemsPerPage}" />
+    </form>
+    
+    <table>
+        <tr>
+            <th>#i18n{searchstats.manage_searchstats.columnYear}</th>
+            <th>#i18n{searchstats.manage_searchstats.columnMonth}</th>
+            <th>#i18n{searchstats.manage_searchstats.columnDay}</th>
+            <th>#i18n{searchstats.manage_searchstats.columnCount}</th>
+        </tr>
+        <#list records_list as record>
+        <tr>
+            <td><a href="jsp/admin/plugins/searchstats/ManageSearchStats.jsp?action=view&year=${record.year} ">${record.year}</a></td>
+            <td><a href="jsp/admin/plugins/searchstats/ManageSearchStats.jsp?action=view&year=${record.year}&amp;month=${record.month} ">${record.month}</a></td>
+            <td><a href="jsp/admin/plugins/searchstats/ManageSearchStats.jsp?action=view&year=${record.year}&amp;month=${record.month}&amp;day=${record.day} ">${record.day}</a></td>
+            <td><a href="jsp/admin/plugins/searchstats/ManageSearchStats.jsp?action=view&year=${record.year}&amp;month=${record.month}&amp;day=${record.day} ">${record.count}</a></td>
+        </tr>
+        </#list>
+    </table>
+    
+</div>
+<br />
+
+<#if display_details>
+
+<div id="left">
+    <div class="content-box">
+        <h2 >#i18n{searchstats.manage_searchstats.titleMostFrequentlySearchedTerms}</h2>
+        <div>
+            <table>
+                <tr>
+                    <th>#i18n{searchstats.manage_searchstats.columnTerm}</th>
+                    <th>#i18n{searchstats.manage_searchstats.columnCount}</th>
+                </tr>
+                <#list terms_list as term>
+                <tr>
+                    <td>${term.term}</td>
+                    <td>${term.count}</td>
+                </tr>
+                </#list>
+            </table>      
+        </div>
+    </div>
+</div>	
+
+<div id="right">
+    <div class="content-box" >
+        
+        <h2>#i18n{searchstats.manage_searchstats.titleDetails} : ${detail_date}</h2>
+        <div>
+            <h3>Liste des recherches</h3>
+            <table>
+                <tr>
+                    <th>#i18n{searchstats.manage_searchstats.columnYear}</th>
+                    <th>#i18n{searchstats.manage_searchstats.columnMonth}</th>
+                    <th>#i18n{searchstats.manage_searchstats.columnDay}</th>
+                    <th>#i18n{searchstats.manage_searchstats.columnHour}</th>
+                    <th>#i18n{searchstats.manage_searchstats.columnTerms}</th>
+                </tr>
+                <#list queries_list as query>
+                <tr>
+                    <td>${query.year}</td>
+                    <td>${query.month}</td>
+                    <td>${query.day}</td>
+                    <td>${query.hour}</td>
+                    <td><#if query.query??>${query.query}</#if></td>
+                </tr>
+                </#list>
+            </table>      
+            
+        </div>
+    </div>
+</div>  
+
+</#if>
+

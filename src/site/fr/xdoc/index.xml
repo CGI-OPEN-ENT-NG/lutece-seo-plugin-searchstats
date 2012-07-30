@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+	<properties>
+		<title>plugin-searchstats</title>
+	</properties>
+	<body>
+		<section name="Projet searchstats">
+			<p>
+			Permet de suivre les mots les plus utilisés par les utilisateurs lors des recherches sur l'instance Lutece.
+			</p>
+		</section>
+	</body>
+</document>  

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+	<properties>
+		<title>Lutece : searchstats</title>
+	</properties>
+	<body>
+		<section name="Searchstats">
+			<p>
+			Monitor the search words from users on the Lutece instance.
+			</p>
+		</section>
+	</body>
+</document>  
