@@ -42,6 +42,7 @@ import fr.paris.lutece.plugins.searchstats.service.TermRecordService;
 import fr.paris.lutece.portal.service.i18n.I18nService;
 import fr.paris.lutece.portal.service.template.AppTemplateService;
 import fr.paris.lutece.portal.web.admin.PluginAdminPageJspBean;
+import fr.paris.lutece.portal.web.util.LocalizedPaginator;
 import fr.paris.lutece.util.html.HtmlTemplate;
 import fr.paris.lutece.util.html.Paginator;
 
@@ -77,8 +78,8 @@ public class SearchStatsJspBean extends PluginAdminPageJspBean
     private static final String MARK_NO_RESULT_STATE = "no_result_state";
     private static final String MARK_DISPLAY_DETAILS = "display_details";
     private static final String MARK_DETAIL_DATE = "detail_date";
-    private static final String MARK_PAGINATOR_DATES = "paginator_dates";
-    private static final String MARK_NB_ITEMS_PER_PAGE_DATES = "nb_items_per_page_dates";
+    private static final String MARK_PAGINATOR = "paginator";
+    private static final String MARK_NB_ITEMS_PER_PAGE = "nb_items_per_page";
 
     // Parameters
     private static final String PARAMETER_YEAR = "year";
@@ -150,13 +151,13 @@ public class SearchStatsJspBean extends PluginAdminPageJspBean
                 _nItemPerPageDates, DEFAULT_ITEMS_PER_PAGE );
         _strPageIndexDates = Paginator.getPageIndex( request, PARAMETER_PAGE_INDEX_DATES, _strPageIndexDates );
 
-        Paginator paginatorDates = new Paginator( listDates, _nItemPerPageDates, getHomeUrl( request ),
-                PARAMETER_PAGE_INDEX_DATES, _strPageIndexDates );
+        LocalizedPaginator paginatorDates = new LocalizedPaginator( listDates, _nItemPerPageDates, getHomeUrl( request ),
+                PARAMETER_PAGE_INDEX_DATES, _strPageIndexDates , getLocale() );
 
         HashMap model = new HashMap(  );
         model.put( MARK_DATES, paginatorDates.getPageItems(  ) );
-        model.put( MARK_PAGINATOR_DATES, paginatorDates );
-        model.put( MARK_NB_ITEMS_PER_PAGE_DATES, "" + _nItemPerPageDates );
+        model.put( MARK_PAGINATOR, paginatorDates );
+        model.put( MARK_NB_ITEMS_PER_PAGE, "" + _nItemPerPageDates );
         model.put( MARK_DISPLAY_DETAILS, bDisplayDetails );
         model.put( MARK_DETAIL_DATE, strDetailLabel );
         model.put( MARK_QUERIES, listQueries );
