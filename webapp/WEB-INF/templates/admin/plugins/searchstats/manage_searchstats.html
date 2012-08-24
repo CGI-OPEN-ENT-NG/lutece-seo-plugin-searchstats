@@ -32,9 +32,7 @@
         </tr>
         </#list>
     </table>
-
 </div>
-
 
 <#if display_details>
 
@@ -42,6 +40,7 @@
     <legend>#i18n{searchstats.manage_searchstats.titleDetails} : ${detail_date}</legend>
 
     <div class="well span4">
+
         <legend>#i18n{searchstats.manage_searchstats.titleMostFrequentlySearchedTerms}</legend>
 
         <table class="table table-striped table-condensed">
@@ -56,10 +55,12 @@
             </tr>
             </#list>
         </table>      
-    </div>	
+    </div>
+    
     <div class="well span7">
 
         <legend>Liste des recherches</legend>
+
         <table class="table table-striped table-condensed">
             <tr>
                 <th>#i18n{searchstats.manage_searchstats.columnYear}</th>
