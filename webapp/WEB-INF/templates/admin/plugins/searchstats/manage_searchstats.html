@@ -1,66 +1,60 @@
 <div class="row" >
-
+	<div class="span12">
+	<fieldset>
     <legend>#i18n{searchstats.manage_searchstats.pageTitle}</legend>
-
-    <div class="well">
-        <form class="form-search" action="jsp/admin/plugins/searchstats/ManageSearchStats.jsp"> 
-            <input type="hidden" name="action" value="refresh" >
-            <input type="checkbox" name="no_result" ${no_result_state}   >
-            #i18n{searchstats.manage_searchstats.textDisplayNoResultOnly}  &nbsp; &nbsp;
-            <button class="btn btn-primary" type="submit" >
-                <i class="icon-refresh icon-white"></i>
-                #i18n{searchstats.manage_searchstats.buttonRefresh}
-            </button>
-        </form>
-    </div>
-
-    <@paginationAdmin paginator=paginator combo=1 />
-
-    <table class="table table-striped table-condensed">
-        <tr>
-            <th>#i18n{searchstats.manage_searchstats.columnYear}</th>
-            <th>#i18n{searchstats.manage_searchstats.columnMonth}</th>
-            <th>#i18n{searchstats.manage_searchstats.columnDay}</th>
-            <th>#i18n{searchstats.manage_searchstats.columnCount}</th>
-        </tr>
-        <#list records_list as record>
-        <tr>
-            <td><a href="jsp/admin/plugins/searchstats/ManageSearchStats.jsp?action=view&year=${record.year} ">${record.year}</a></td>
-            <td><a href="jsp/admin/plugins/searchstats/ManageSearchStats.jsp?action=view&year=${record.year}&amp;month=${record.month} ">${record.month}</a></td>
-            <td><a href="jsp/admin/plugins/searchstats/ManageSearchStats.jsp?action=view&year=${record.year}&amp;month=${record.month}&amp;day=${record.day} ">${record.day}</a></td>
-            <td><a href="jsp/admin/plugins/searchstats/ManageSearchStats.jsp?action=view&year=${record.year}&amp;month=${record.month}&amp;day=${record.day} ">${record.count}</a></td>
-        </tr>
-        </#list>
-    </table>
-</div>
-
-<#if display_details>
-
-<div class="row">
+		<div class="well">
+			<form class="form-search" action="jsp/admin/plugins/searchstats/ManageSearchStats.jsp"> 
+				<input type="hidden" name="action" value="refresh" >
+				<input type="checkbox" name="no_result" ${no_result_state}   >
+				#i18n{searchstats.manage_searchstats.textDisplayNoResultOnly}  &nbsp; &nbsp;
+				<button class="btn btn-primary" type="submit" >
+					<i class="icon-refresh icon-white"></i>
+					#i18n{searchstats.manage_searchstats.buttonRefresh}
+				</button>
+			</form>
+		</div>
+		<@paginationAdmin paginator=paginator combo=1 />
+		<table class="table table-striped table-condensed">
+			<tr>
+				<th>#i18n{searchstats.manage_searchstats.columnYear}</th>
+				<th>#i18n{searchstats.manage_searchstats.columnMonth}</th>
+				<th>#i18n{searchstats.manage_searchstats.columnDay}</th>
+				<th>#i18n{searchstats.manage_searchstats.columnCount}</th>
+			</tr>
+			<#list records_list as record>
+			<tr>
+				<td><a href="jsp/admin/plugins/searchstats/ManageSearchStats.jsp?action=view&year=${record.year} ">${record.year}</a></td>
+				<td><a href="jsp/admin/plugins/searchstats/ManageSearchStats.jsp?action=view&year=${record.year}&amp;month=${record.month} ">${record.month}</a></td>
+				<td><a href="jsp/admin/plugins/searchstats/ManageSearchStats.jsp?action=view&year=${record.year}&amp;month=${record.month}&amp;day=${record.day} ">${record.day}</a></td>
+				<td><a href="jsp/admin/plugins/searchstats/ManageSearchStats.jsp?action=view&year=${record.year}&amp;month=${record.month}&amp;day=${record.day} ">${record.count}</a></td>
+			</tr>
+			</#list>
+		</table>
+	</fieldset>
+	<#if display_details>
+	<fieldset>
     <legend>#i18n{searchstats.manage_searchstats.titleDetails} : ${detail_date}</legend>
-
-    <div class="well span4">
-
-        <legend>#i18n{searchstats.manage_searchstats.titleMostFrequentlySearchedTerms}</legend>
-
-        <table class="table table-striped table-condensed">
-            <tr>
-                <th>#i18n{searchstats.manage_searchstats.columnTerm}</th>
-                <th>#i18n{searchstats.manage_searchstats.columnTermCount}</th>
-            </tr>
-            <#list terms_list as term>
-            <tr>
-                <td>${term.term}</td>
-                <td>${term.count}</td>
-            </tr>
-            </#list>
-        </table>      
-    </div>
-    
-    <div class="well span7">
-
+	<div class="row">
+		<div class="well span4">
+		<fieldset>
+		<legend>#i18n{searchstats.manage_searchstats.titleMostFrequentlySearchedTerms}</legend>
+			<table class="table table-striped table-condensed">
+				<tr>
+					<th>#i18n{searchstats.manage_searchstats.columnTerm}</th>
+					<th>#i18n{searchstats.manage_searchstats.columnTermCount}</th>
+				</tr>
+				<#list terms_list as term>
+				<tr>
+					<td>${term.term}</td>
+					<td>${term.count}</td>
+				</tr>
+				</#list>
+			</table> 
+		</fieldset>
+		</div>
+		<div class="well span7">
+		<fieldset>
         <legend>Liste des recherches</legend>
-
         <table class="table table-striped table-condensed">
             <tr>
                 <th>#i18n{searchstats.manage_searchstats.columnYear}</th>
@@ -78,10 +72,12 @@
                 <td><#if query.query??>${query.query}</#if></td>
             </tr>
             </#list>
-        </table>      
-    </div>
+        </table> 
+		</fieldset>		
+		</div>
+	</div>
+	</fieldset>
+	</#if>
+	</div>
 </div>
-
-
-</#if>
 

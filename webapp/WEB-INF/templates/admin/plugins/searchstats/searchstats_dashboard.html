@@ -1,9 +1,11 @@
-<div class="dashboard-item">
-    <img src="${icon}" width="24" height="24" align="middle"/>
-    <a href="${url}" >
+<div class="row">
+	<div class="span3">
+    <img src="${icon}" alt="#i18n{searchstats.dashboard.topTerms}" title="#i18n{searchstats.dashboard.topTerms}" />
+    <a href="${url}" title="#i18n{searchstats.dashboard.topTerms}" >
         #i18n{searchstats.dashboard.topTerms}
     </a> : 
     <#list top_terms_list as term>
         ${term.term} (${term.count}) 
     </#list>
+	</div>
 </div>
