@@ -1,11 +1,7 @@
-<div class="row-fluid">
-	<div class="span3">
-    <img src="${icon}" alt="#i18n{searchstats.dashboard.topTerms}" title="#i18n{searchstats.dashboard.topTerms}" />
-    <a href="${url}" title="#i18n{searchstats.dashboard.topTerms}" >
-        #i18n{searchstats.dashboard.topTerms}
-    </a> : 
+<div class="well">
+    <img src="${icon}" class="thumblist" alt="#i18n{searchstats.dashboard.topTerms}" title="#i18n{searchstats.dashboard.topTerms}" />
+    <a href="${url}" title="#i18n{searchstats.dashboard.topTerms}" >#i18n{searchstats.dashboard.topTerms}</a> : 
     <#list top_terms_list as term>
-        ${term.term} (${term.count}) 
+       <span class="badge badge-info">${term.term} (${term.count}) </span>&nbsp;
     </#list>
-	</div>
 </div>
