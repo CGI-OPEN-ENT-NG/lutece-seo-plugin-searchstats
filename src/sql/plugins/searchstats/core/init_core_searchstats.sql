@@ -11,3 +11,10 @@ INSERT INTO core_admin_right (id_right,name,level_right,admin_url,description,is
 --
 DELETE FROM core_user_right WHERE id_right = 'SEARCH_STATS_MANAGEMENT';
 INSERT INTO core_user_right (id_right,id_user) VALUES ('SEARCH_STATS_MANAGEMENT',1);
+
+
+--
+-- Dumping data for table core_dashboard
+--
+INSERT INTO core_dashboard(dashboard_name, dashboard_column, dashboard_order) VALUES('SEARCH_STATS', 1, 4);
+
