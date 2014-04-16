@@ -1,41 +1,41 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-	<parent>
-	  <artifactId>lutece-plugins-pom</artifactId>
-	  <groupId>fr.paris.lutece.plugins</groupId>
-	  <version>3.5</version>
-	</parent>
+    <parent>
+        <artifactId>lutece-plugins-pom</artifactId>
+        <groupId>fr.paris.lutece.plugins</groupId>
+        <version>3.7</version>
+    </parent>
 
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>fr.paris.lutece.plugins</groupId>
-	<artifactId>plugin-searchstats</artifactId>
-	<packaging>lutece-plugin</packaging>
-	<version>4.0.1-SNAPSHOT</version>
-	<name>Lutece searchstats plugin</name>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>fr.paris.lutece.plugins</groupId>
+    <artifactId>plugin-searchstats</artifactId>
+    <packaging>lutece-plugin</packaging>
+    <version>4.0.1-SNAPSHOT</version>
+    <name>Lutece searchstats plugin</name>
 
-	<repositories>
-	  <repository>
-	    <id>lutece</id>
-	    <name>luteceRepository</name>
-	    <url>http://dev.lutece.paris.fr/maven_repository</url>
-	    <layout>default</layout>
-	  </repository>
-	</repositories>
+    <repositories>
+        <repository>
+            <id>lutece</id>
+            <name>luteceRepository</name>
+            <url>http://dev.lutece.paris.fr/maven_repository</url>
+            <layout>default</layout>
+        </repository>
+    </repositories>
 
-	<dependencies>
-		<dependency>
-	    <groupId>fr.paris.lutece</groupId>
-	    <artifactId>lutece-core</artifactId>
-	    <version>[3.1.6,)</version>
-	    <type>lutece-core</type>
-	  </dependency>
-	</dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>fr.paris.lutece</groupId>
+            <artifactId>lutece-core</artifactId>
+            <version>[3.1.6,)</version>
+            <type>lutece-core</type>
+        </dependency>
+    </dependencies>
 	
-	<properties>
-		<componentName>searchstats</componentName>
-		<jiraProjectName>SEARCHSTATS</jiraProjectName>
-		<jiraComponentId>10182</jiraComponentId>
-	</properties>
+    <properties>
+        <componentName>searchstats</componentName>
+        <jiraProjectName>SEARCHSTATS</jiraProjectName>
+        <jiraComponentId>10182</jiraComponentId>
+    </properties>
     <scm>
         <connection>scm:svn:http://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/seo/plugin-searchstats</connection>
         <developerConnection>scm:svn:https://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/seo/plugin-searchstats</developerConnection>
