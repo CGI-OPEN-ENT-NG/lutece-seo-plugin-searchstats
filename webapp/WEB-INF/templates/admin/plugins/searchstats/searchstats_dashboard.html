@@ -1,7 +1,14 @@
-<div class="well">
-    <img src="${icon}" class="thumblist" alt="#i18n{searchstats.dashboard.topTerms}" title="#i18n{searchstats.dashboard.topTerms}" />
-    <a href="${url}" title="#i18n{searchstats.dashboard.topTerms}" >#i18n{searchstats.dashboard.topTerms}</a> : 
-    <#list top_terms_list as term>
-       <span class="badge badge-info">${term.term} (${term.count}) </span>&nbsp;
-    </#list>
+<div class="small-box bg-maroon">
+	<div class="inner">
+		<h4><strong>#i18n{searchstats.dashboard.topTerms}</strong></h4>
+		<#list top_terms_list as term>
+			 <span class="label label-info" style="font-size:${term.count * 6}px;margin:2px;">${term.term} (${term.count})</span>
+		</#list>	
+    </div>
+    <div class="icon">
+		<i class="fa  fa-search"></i>
+    </div>
+    <a href="${url}" class="small-box-footer">
+		 #i18n{searchstats.dashboard.topTerms} <i class="fa fa-arrow-circle-right"></i>
+    </a>
 </div>
