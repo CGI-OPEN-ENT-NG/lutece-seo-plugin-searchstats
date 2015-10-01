@@ -1,9 +1,10 @@
+<!--
 <div class="small-box bg-maroon">
 	<div class="inner">
 		<h4><strong>#i18n{searchstats.dashboard.topTerms}</strong></h4>
 		<#list top_terms_list as term>
 			 <span class="label label-info" style="font-size:${term.count * 6}px;margin:2px;">${term.term} (${term.count})</span>
-		</#list>	
+		</#list>
     </div>
     <div class="icon">
 		<i class="fa  fa-search"></i>
@@ -11,4 +12,14 @@
     <a href="${url}" class="small-box-footer">
 		 #i18n{searchstats.dashboard.topTerms} <i class="fa fa-arrow-circle-right"></i>
     </a>
+</div>
+-->
+<div class="info-box">
+  <span class="info-box-icon bg-blue"><i class="fa fa-tags"></i></span>
+  <div class="info-box-content">
+    <span class="info-box-text">#i18n{searchstats.dashboard.topTerms}</span>
+		<#list top_terms_list as term>
+			 <span class="label label-info" style="font-size:${term.count}px;margin:2px;" title="${term.term} (${term.count})">${term.term} (${term.count})</span>
+		</#list>
+  </div>
 </div>
