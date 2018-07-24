@@ -33,34 +33,35 @@
  */
 package fr.paris.lutece.plugins.searchstats.business;
 
+import fr.paris.lutece.plugins.searchstats.business.QueryRecord;
 import fr.paris.lutece.plugins.searchstats.service.SearchStatsPlugin;
 import fr.paris.lutece.portal.service.plugin.Plugin;
 import fr.paris.lutece.portal.service.spring.SpringContextService;
 
 import java.util.List;
 
-
 /**
  * This class provides instances management methods (create, find, ...) for QueryRecord objects
  */
 public final class QueryRecordHome
 {
-    private static IQueryRecordDAO _dao = (IQueryRecordDAO) SpringContextService.getPluginBean( SearchStatsPlugin.PLUGIN_NAME,
-            "queryRecordDAO" );
+    private static IQueryRecordDAO _dao = (IQueryRecordDAO) SpringContextService.getPluginBean( SearchStatsPlugin.PLUGIN_NAME, "queryRecordDAO" );
 
     /**
      * Private constructor - this class need not be instantiated
      */
-    private QueryRecordHome(  )
+    private QueryRecordHome( )
     {
     }
 
     /**
      * Creation of an instance of queryRecord
      *
-     * @param queryRecord The instance of the queryRecord which contains the informations to store
-     * @param plugin The current plugin using this method
-     * @return The  instance of queryRecord which has been created with its primary key.
+     * @param queryRecord
+     *            The instance of the queryRecord which contains the informations to store
+     * @param plugin
+     *            The current plugin using this method
+     * @return The instance of queryRecord which has been created with its primary key.
      */
     public static QueryRecord create( QueryRecord queryRecord, Plugin plugin )
     {
@@ -69,26 +70,49 @@ public final class QueryRecordHome
         return queryRecord;
     }
 
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
     // Finders
 
     /**
      * Returns a list of QueryRecord objects filtered by criteria
-     * @param plugin The current plugin using this method
+     * 
+     * @param plugin
+     *            The current plugin using this method
      * @return A list of QueryRecord
      */
     public static List<QueryRecord> findQueryRecordsListByCriteria( Plugin plugin, RecordFilter filter )
     {
         return _dao.selectQueryRecordListByCriteria( plugin, filter );
     }
+    
+    /**
+     * Returns a list of QueryRecord objects filtered by Date min
+     * 
+     * @param plugin
+     *            The current plugin using this method
+     * @return A list of QueryRecord
+     */
+    public static List<QueryRecord> selectQueryRecordListFromDate( Plugin plugin, RecordFilter filter )
+    {
+        return _dao.selectQueryRecordListFromDate( plugin, filter );
+    }
+    
 
     /**
      * Returns a collection of RecordCount objects
-     * @param plugin The current plugin using this method
+     * 
+     * @param plugin
+     *            The current plugin using this method
      * @return A collection of RecordCount
      */
     public static List<RecordCount> findRecordsDatesList( Plugin plugin, boolean bNoResult )
     {
         return _dao.selectQueryRecordDatesList( plugin, bNoResult );
     }
+
+    public static List<QueryRecord> getQueryRecordList( Plugin plugin )
+    {
+        return _dao.selectQueryRecordList( plugin );
+    }
+
 }
