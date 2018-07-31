@@ -33,5 +33,13 @@
             <dashboard-zone-order>2</dashboard-zone-order>
         </dashboard-component>
     </dashboard-components>
+    <daemons>
+        <daemon>
+            <daemon-id>SearchStatsDaemon</daemon-id>
+            <daemon-name>searchstats.daemon.StatsDaemon.Stats</daemon-name>
+            <daemon-description>searchstats.daemon.StatsDaemon.description</daemon-description>
+            <daemon-class>fr.paris.lutece.plugins.searchstats.daemon.StatsDaemon</daemon-class>
+        </daemon>
+    </daemons>
 
 </plug-in>

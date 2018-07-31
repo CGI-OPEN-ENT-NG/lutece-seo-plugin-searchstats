@@ -1,4 +1,4 @@
-/*
+	/*
  * Copyright (c) 2002-2014, Mairie de Paris
  * All rights reserved.
  *
@@ -33,10 +33,10 @@
  */
 package fr.paris.lutece.plugins.searchstats.business;
 
+import fr.paris.lutece.plugins.searchstats.business.QueryRecord;
 import fr.paris.lutece.portal.service.plugin.Plugin;
 
 import java.util.List;
-
 
 /**
  * QueryRecordDAO Interface
@@ -47,23 +47,51 @@ public interface IQueryRecordDAO
      * Insert a new record in the table.
      *
      *
-     * @param queryRecord The queryRecord object
-     * @param plugin The Plugin using this data access service
+     * @param queryRecord
+     *            The queryRecord object
+     * @param plugin
+     *            The Plugin using this data access service
      */
     void insert( QueryRecord queryRecord, Plugin plugin );
 
     /**
      * Load the list of queryRecords
-     * @param plugin The Plugin using this data access service
-     * @param filter Filter containing criterias
+     * 
+     * @param plugin
+     *            The Plugin using this data access service
+     * @param filter
+     *            Filter containing criterias
      * @return The Collection of the QueryRecords
      */
     public List<QueryRecord> selectQueryRecordListByCriteria( Plugin plugin, RecordFilter filter );
 
     /**
+     * Load the list of queryRecords
+     * 
+     * @param plugin
+     *            The Plugin using this data access service
+     * @param filter
+     *            Filter containing criterias
+     * @return The Collection of the QueryRecords
+     */
+    public List<QueryRecord> selectQueryRecordListFromDate( Plugin plugin, RecordFilter filter );
+
+            
+    /**
      * Load the list of RecordCount for each date that have at least a record
-     * @param plugin The Plugin using this data access service
+     * 
+     * @param plugin
+     *            The Plugin using this data access service
      * @return The Collection of the RecordCount
      */
     public List<RecordCount> selectQueryRecordDatesList( Plugin plugin, boolean bNoResult );
+
+    /**
+     * Load the list of queryRecords
+     * 
+     * @param plugin
+     * 			  The Plugin using this data access service
+     * @return The Collection of the QueryRecords
+     */
+    public List<QueryRecord> selectQueryRecordList( Plugin plugin );
 }
