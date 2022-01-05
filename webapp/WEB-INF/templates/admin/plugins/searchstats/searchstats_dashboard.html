@@ -1,25 +1,13 @@
-<!--
-<div class="small-box bg-maroon">
-	<div class="inner">
-		<h4><strong>#i18n{searchstats.dashboard.topTerms}</strong></h4>
-		<#list top_terms_list as term>
-			 <span class="label label-info" style="font-size:${term.count * 6}px;margin:2px;">${term.term} (${term.count})</span>
-		</#list>
-    </div>
-    <div class="icon">
-		<i class="fa  fa-search"></i>
-    </div>
-    <a href="${url}" class="small-box-footer">
-		 #i18n{searchstats.dashboard.topTerms} <i class="fa fa-arrow-circle-right"></i>
-    </a>
-</div>
--->
-<div class="info-box">
-  <span class="info-box-icon bg-blue"><i class="fa fa-tags"></i></span>
-  <div class="info-box-content">
-    <span class="info-box-text">#i18n{searchstats.dashboard.topTerms}</span>
-		<#list top_terms_list as term>
-			 <span class="label label-info" style="font-size:${term.count}px;margin:2px;" title="${term.term} (${term.count})">${term.term} (${term.count})</span>
-		</#list>
-  </div>
-</div>
+<@adminDashboardWidget title='#i18n{searchstats.dashboard.topTerms}' id='searchstats_dashboard' url=url  >
+<@div class="row align-items-center">
+    <@div class="col-auto">
+        <span class="bg-primary text-white avatar"><@icon style='tags' /></span>
+    </@div>
+    <@div class="col">
+	<#list top_terms_list as term>
+		<#assign style><#if term.count gt 12><#if term.count lt 22>style="font-size:${term.count}px;padding:12px 2px;"<#else>style="font-size:22px;padding:15px 5px;"</#if></#if></#assign>
+		<@tag color='info ml-1' title='${term.term} (${term.count})' params=style>${term.term} (${term.count})</@tag>
+	</#list>
+    </@div>
+</@div>
+</@adminDashboardWidget>
