@@ -64,7 +64,7 @@ public final class SearchStatsService
 
     private static String PROPERTY_MAIL_SENDER_NAME = AppPropertiesService.getProperty( "daemon.mail.sender_name" );
     private static String CONSTANT_MAIL_SENDER = MailService.getNoReplyEmail( );
-    private static String MESSAGE_MAIL_SUBJECT = I18nService.getLocalizedString("searchstats.mail_content.subject", Locale.getDefault()) + AppPathService.getProdUrl();
+    private static String MESSAGE_MAIL_SUBJECT = I18nService.getLocalizedString("searchstats.mail_content.subject", Locale.getDefault()) + AppPathService.getBaseUrl(null);
     private static final String TEMPLATE_STATS_TEMPLATE = "/admin/plugins/searchstats/mail/mail_content.html";
     private static final String MARK_RECORDS_LIST = "records_list";
     private static final String MARK_SEARCH_STATS_SERVICE = "search_stats_service";
@@ -89,7 +89,7 @@ public final class SearchStatsService
         model.put( MARK_RECORDS_LIST, QueryRecordHome.selectQueryRecordListFromDate(plugin, recordFilter) );
         model.put( MARK_SEARCH_STATS_SERVICE, new SearchStatsService( ) );
         model.put( MARK_TOP_RESULT_MAX, AppPropertiesService.getPropertyInt( "daemon.mail.nb_top_result_max", 10 ) );
-        model.put( MARK_URL, AppPathService.getProdUrl());
+        model.put( MARK_URL, AppPathService.getBaseUrl( null ));
         String strContent = AppTemplateService.getTemplate( TEMPLATE_STATS_TEMPLATE, Locale.getDefault( ), model ).getHtml( );
 
         Collection<Recipient> colMailingList = AdminMailingListService.getRecipients( null, AppPropertiesService.getProperty( "daemon.mail.recipient" ) );
