@@ -90,6 +90,7 @@ public final class SearchStatsService
         model.put( MARK_SEARCH_STATS_SERVICE, new SearchStatsService( ) );
         model.put( MARK_TOP_RESULT_MAX, AppPropertiesService.getPropertyInt( "daemon.mail.nb_top_result_max", 10 ) );
         model.put( MARK_URL, AppPathService.getProdUrl(""));
+
         String strContent = AppTemplateService.getTemplate( TEMPLATE_STATS_TEMPLATE, Locale.getDefault( ), model ).getHtml( );
 
         Collection<Recipient> colMailingList = AdminMailingListService.getRecipients( null, AppPropertiesService.getProperty( "daemon.mail.recipient" ) );

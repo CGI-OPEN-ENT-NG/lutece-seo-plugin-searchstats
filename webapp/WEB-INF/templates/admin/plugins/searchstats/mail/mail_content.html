@@ -1,24 +1,23 @@
 <#macro printTable listResultRecord i18nKeyType i18nKeyOccurence nbTopResultMax>
-	<h3 align="center">#i18n{${i18nKeyType}}</h3>
-				<table align="center" border="1">
-					<tr>
-						<th>Recherche</th>
-						<th>#i18n{${i18nKeyOccurence}}</th>
-					</tr>
-					<#list listResultRecord as resultRecord>
-					<#if (resultRecord.term)?? && (resultRecord?counter lt nbTopResultMax) >
-						<tr>
-							<td align="center">${(resultRecord.term)?html}</td>
-							<td align="center">${(resultRecord.count)}</td>
-						</tr>
-					<#else>
-						<#break>
-					</#if>
-					</#list>
-				</table>
-	<br>
+<h3 align="center">#i18n{${i18nKeyType}}</h3>
+<table align="center" border="1">
+<tr>
+	<th>Recherche</th>
+	<th>#i18n{${i18nKeyOccurence}}</th>
+</tr>
+<#list listResultRecord as resultRecord>
+<#if (resultRecord.term)?? && (resultRecord?counter lt nbTopResultMax) >
+	<tr>
+		<td align="center">${(resultRecord.term)?html}</td>
+		<td align="center">${(resultRecord.count)}</td>
+	</tr>
+<#else>
+	<#break>
+</#if>
+</#list>
+</table>
+<br>
 </#macro>
-
 <div style="border:2px solid black">
 	<h2 align="center">#i18n{searchstats.mail_content.title} </h1>
 	<h3 align="center">${site_url}</h3>
@@ -28,7 +27,7 @@
 <#assign listResultsRecordOfMonth = search_stats_service.getSearchStatsAfterdate(0,1,0,0,records_list,nb_top_result_max)>
 <#assign listResultsRecordOfYear = search_stats_service.getSearchStatsAfterdate(1,0,0,0,records_list,nb_top_result_max)>
 <#assign listResultsRecordSinceLastDaemon = search_stats_service.getSearchStatsAfterLastDaemon(records_list,nb_top_result_max)>
-<@printTable listResultsRecordSinceLastDaemon 'searchstats.mail_content.duration.lastdaemon' 'searchstats.mail_content.occurences'  nb_top_result_max/>
+<@printTable listResultsRecordSinceLastDaemon 'searchstats.mail_content.duration.lastdaemon' 'searchstats.mail_content.occurences' nb_top_result_max/>
 <@printTable listResultsRecordOfDay 'searchstats.mail_content.duration1d' 'searchstats.mail_content.occurences' nb_top_result_max/>
 <@printTable listResultsRecordOfWeek 'searchstats.mail_content.duration1w' 'searchstats.mail_content.occurences' nb_top_result_max/>
 <@printTable listResultsRecordOfMonth 'searchstats.mail_content.duration1m' 'searchstats.mail_content.occurences' nb_top_result_max/>
