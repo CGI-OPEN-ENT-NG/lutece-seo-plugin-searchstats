@@ -1,13 +1,13 @@
-<@adminDashboardWidget title='#i18n{searchstats.dashboard.topTerms}' id='searchstats_dashboard' url=url  >
-<@div class="row align-items-center">
-    <@div class="col-auto">
-        <span class="bg-primary text-white avatar"><@icon style='tags' /></span>
-    </@div>
-    <@div class="col">
-	<#list top_terms_list as term>
-		<#assign style><#if term.count gt 12><#if term.count lt 22>style="font-size:${term.count}px;padding:12px 2px;"<#else>style="font-size:22px;padding:15px 5px;"</#if></#if></#assign>
-		<@tag color='info ml-1' title='${term.term} (${term.count})' params=style>${term.term} (${term.count})</@tag>
-	</#list>
-    </@div>
+<@adminDashboardWidget title='#i18n{searchstats.adminFeature.searchstats_management.name}' id='searchstat_dashboard' url=url  >
+<#if top_terms_list?size=0 >
+<@empty title='#i18n{searchstats.adminFeature.searchstats_management.name}' subtitle=' ' iconName='graph-off' />
+<#else>
+<!-- <@p class="lead">#i18n{searchstats.dashboard.topTerms}</@p> -->
+<@div class='d-flex justify-content-center align-items-center flex-wrap' params='style="max-width:360px"'>
+<#list top_terms_list as term>
+	<#assign tagFontSize><#if term.count lte 5>${(term.count/5)?replace(',','.')}<#elseif term.count gte 6 && term.count lt 11>${(term.count/20)?replace(',','.')}<#elseif term.count gte 11 && term.count lt 51>${(term.count/30)?replace(',','.')}<#elseif term.count gte 51 && term.count lt 81>${(term.count/50)?replace(',','.')}<#elseif term.count gte 81 && term.count lt 101>${(term.count/60)?replace(',','.')}<#elseif term.count gte 101>${(term.count/70)?replace(',','.')}</#if></#assign>
+	<@tag color='info' params=' style="font-size:${tagFontSize}rem;margin:2px;"' title='${term.term!} (${term.count!})'>${term.term!} (${term.count!})</@tag>
+</#list>
 </@div>
+</#if>
 </@adminDashboardWidget>

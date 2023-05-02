@@ -1,50 +1,42 @@
-<@row>
-	<@columns>
-		<@box>
-			<@boxHeader title='#i18n{searchstats.manage_searchstats.pageTitle}' skipHeader=true >
-				<@tform method='post' type='inline' action='jsp/admin/plugins/searchstats/ManageSearchStats.jsp'>
-					<@input type="hidden" name='action' value='refresh' />
-					<#assign isChecked><#if no_result_state?trim=''>false<#else>true</#if></#assign>
-					<@checkBox orientation='switch' class='me-1 ml-1' name='no_result' id='no_result_state' labelKey='#i18n{searchstats.manage_searchstats.textDisplayNoResultOnly}' checked=isChecked?boolean mandatory=false />
-					<@button type='submit' title='#i18n{searchstats.manage_searchstats.buttonRefresh}' buttonIcon='refresh' size='sm' />
-				</@tform>
-			</@boxHeader>
-			<@boxBody>
-				<@table>
-					<@tr>
-						<@th>#i18n{searchstats.manage_searchstats.columnYear}</@th>
-						<@th>#i18n{searchstats.manage_searchstats.columnMonth}</@th>
-						<@th>#i18n{searchstats.manage_searchstats.columnDay}</@th>
-						<@th>#i18n{searchstats.manage_searchstats.columnCount}</@th>
-					</@tr>
-					<#list records_list as record>
-					<@tr>
-						<@td><@link href='jsp/admin/plugins/searchstats/ManageSearchStats.jsp?action=view&year=${record.year}' title='#i18n{searchstats.manage_searchstats.titleDetails} #i18n{searchstats.manage_searchstats.columnYear} ${record.year}'>${record.year}</@link></@td>
-						<@td><@link href='jsp/admin/plugins/searchstats/ManageSearchStats.jsp?action=view&year=${record.year}&amp;month=${record.month}' title='#i18n{searchstats.manage_searchstats.titleDetails} #i18n{searchstats.manage_searchstats.columnMonth} ${record.month}/${record.year}'>${record.month}</@link></@td>
-						<@td><@link href='jsp/admin/plugins/searchstats/ManageSearchStats.jsp?action=view&year=${record.year}&amp;month=${record.month}&amp;day=${record.day}' title='#i18n{searchstats.manage_searchstats.titleDetails} #i18n{searchstats.manage_searchstats.columnDay} ${record.day}/${record.month}/${record.year}'>${record.day}</@link></@td>
-						<@td><strong>${record.count}</strong></@td>
-					</@tr>
-					</#list>
-				</@table>
-				<@paginationAdmin paginator=paginator combo=1 />
-			</@boxBody>
-		</@box>
-	</@columns>
-</@row>
-<#if display_details>
-<@row>
-	<@columns>
-		<@box>
-			<@boxHeader title='#i18n{searchstats.manage_searchstats.titleDetails} : ${detail_date}' />
-			<@boxBody>
+<@pageContainer>
+    <@pageColumn>
+        <@pageHeader title='#i18n{searchstats.manage_searchstats.pageTitle}'>
+			<@tform action="jsp/admin/plugins/searchstats/ManageSearchStats.jsp" class='d-flex align-items-center'> 
+				<@input type="hidden" name="action" value="refresh" />
+				<#assign isChecked><#if no_result_state !=''>true<#else>false</#if></#assign>
+				<@checkBox name='no_result' labelKey='#i18n{searchstats.manage_searchstats.textDisplayNoResultOnly}' orientation='switch' checked=isChecked?boolean />
+				<@button color='primary' type='submit' title='#i18n{searchstats.manage_searchstats.buttonRefresh}' buttonIcon='refresh' />
+			</@tform>
+        </@pageHeader>
+		<@table headBody=true>
+			<@tr>
+				<@th>#i18n{searchstats.manage_searchstats.columnYear}</@th>
+				<@th>#i18n{searchstats.manage_searchstats.columnMonth}</@th>
+				<@th>#i18n{searchstats.manage_searchstats.columnDay}</@th>
+				<@th>#i18n{searchstats.manage_searchstats.columnCount}</@th>
+			</@tr>
+			<@tableHeadBodySeparator />
+			<#list records_list as record>
+			<@tr>
+				<@td><a href="jsp/admin/plugins/searchstats/ManageSearchStats.jsp?action=view&year=${record.year} ">${record.year}</a></@td>
+				<@td><a href="jsp/admin/plugins/searchstats/ManageSearchStats.jsp?action=view&year=${record.year}&amp;month=${record.month} ">${record.month}</a></@td>
+				<@td><a href="jsp/admin/plugins/searchstats/ManageSearchStats.jsp?action=view&year=${record.year}&amp;month=${record.month}&amp;day=${record.day} ">${record.day}</a></@td>
+				<@td><a href="jsp/admin/plugins/searchstats/ManageSearchStats.jsp?action=view&year=${record.year}&amp;month=${record.month}&amp;day=${record.day} ">${record.count}</a></@td>
+			</@tr>
+			</#list>
+		</@table>
+		<@paginationAdmin paginator=paginator combo=1 />
+		<#if display_details>
+			<h3>#i18n{searchstats.manage_searchstats.titleDetails} : ${detail_date}</h3>
 			<@row>
 				<@columns sm=4>
 					<h3>#i18n{searchstats.manage_searchstats.titleMostFrequentlySearchedTerms}</h3>
-					<@table>
+					<@table headBody=true>
 					<@tr>
 						<@th>#i18n{searchstats.manage_searchstats.columnTerm}</@th>
 						<@th>#i18n{searchstats.manage_searchstats.columnTermCount}</@th>
 					</@tr>
+					<@tableHeadBodySeparator />
 					<#list terms_list as term>
 					<@tr>
 						<@td>${term.term}</@td>
@@ -52,31 +44,29 @@
 					</@tr>
 					</#list>
 					</@table> 
-				</@columns>
-				<@columns sm=8>
+				</@columns> 
+				<@columns sm=8>	
 					<h3>Liste des recherches</h3>
-					<@table>
+					<@table headBody=true>
 					<@tr>
 						<@th>#i18n{searchstats.manage_searchstats.columnYear}</@th>
-						<@th>#i18n{searchstats.manage_searchstats.columnMonth}</@th>
 						<@th>#i18n{searchstats.manage_searchstats.columnDay}</@th>
 						<@th>#i18n{searchstats.manage_searchstats.columnHour}</@th>
 						<@th>#i18n{searchstats.manage_searchstats.columnTerms}</@th>
 					</@tr>
+					<@tableHeadBodySeparator />
 					<#list queries_list as query>
-					<@tr>
-						<@td>${query.year}</@td>
-						<@td>${query.month}</@td>
-						<@td>${query.day}</@td>
-						<@td>${query.hour}</@td>
-						<@td><#if query.query??>${query.query}</#if></@td>
-					</@tr>
+						<@tr>
+							<@td>${query.year}</@td>
+							<@td>${query.month}</@td>
+							<@td>${query.day}</@td>
+							<@td>${query.hour}</@td>
+							<@td><#if query.query??>${query.query}</#if></@td>
+						</@tr>
 					</#list>
 					</@table> 
-				</@columns>
-			</@row>			
-			</@boxBody>
-		</@box>
-	</@columns>
-</@row>
-</#if>
+				</@columns> 	
+			</@row> 	
+		</#if>
+	</@pageColumn>
+</@pageContainer>
