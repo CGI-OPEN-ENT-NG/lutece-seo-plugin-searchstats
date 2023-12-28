@@ -42,6 +42,18 @@
         <developerConnection>scm:git:https://github.com/lutece-platform/lutece-seo-plugin-searchstats.git</developerConnection>
         <url>https://github.com/lutece-platform/lutece-seo-plugin-searchstats.git</url>
       <tag>HEAD</tag>
-  </scm>
+    </scm>
+    <distributionManagement>
+        <repository>
+            <id>nexusEnt</id>
+            <name>CGI Maven Releases</name>
+            <url>https://nexus-pic2.support-ent.fr/repository/cgi-maven-releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexusSnapshots</id>
+            <name>CGI Maven Snapshots</name>
+            <url>https://nexus-pic2.support-ent.fr/repository/cgi-maven-snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
     
 </project>
