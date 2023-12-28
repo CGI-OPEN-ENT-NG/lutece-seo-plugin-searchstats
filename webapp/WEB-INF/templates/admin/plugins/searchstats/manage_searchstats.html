@@ -2,11 +2,11 @@
 	<div class="col-xs-12 col-sm-12 col-md-12">
 		<div class="box box-primary">
 			<div class="box-header">
-				<h3 class="box-title">#i18n{searchstats.manage_searchstats.pageTitle}</h3>
-				<div class="box-tools pull-right">
-					<form class="form-inline" action="jsp/admin/plugins/searchstats/ManageSearchStats.jsp"> 
+				<div class="d-flex flex-column flex-md-row justify-content-between mb-2">
+					<h3 class="box-title">#i18n{searchstats.manage_searchstats.pageTitle}</h3>
+					<form class="form-inline" action="jsp/admin/plugins/searchstats/ManageSearchStats.jsp">
 						<input type="hidden" name="action" value="refresh" >
-						<label class="checkbox-inline">
+						<label class="checkbox-inline me-2">
 							<input type="checkbox" name="no_result" ${no_result_state} >
 							#i18n{searchstats.manage_searchstats.textDisplayNoResultOnly}
 						</label>
@@ -17,25 +17,25 @@
 					</form>
 				</div>
 			</div>
-			<div class="box-body">	
-			<@paginationAdmin paginator=paginator combo=1 />
-			<table class="table table-hover table-condensed">
-				<tr>
-					<th>#i18n{searchstats.manage_searchstats.columnYear}</th>
-					<th>#i18n{searchstats.manage_searchstats.columnMonth}</th>
-					<th>#i18n{searchstats.manage_searchstats.columnDay}</th>
-					<th>#i18n{searchstats.manage_searchstats.columnCount}</th>
-				</tr>
-				<#list records_list as record>
-				<tr>
-					<td><a href="jsp/admin/plugins/searchstats/ManageSearchStats.jsp?action=view&year=${record.year} ">${record.year}</a></td>
-					<td><a href="jsp/admin/plugins/searchstats/ManageSearchStats.jsp?action=view&year=${record.year}&amp;month=${record.month} ">${record.month}</a></td>
-					<td><a href="jsp/admin/plugins/searchstats/ManageSearchStats.jsp?action=view&year=${record.year}&amp;month=${record.month}&amp;day=${record.day} ">${record.day}</a></td>
-					<td><a href="jsp/admin/plugins/searchstats/ManageSearchStats.jsp?action=view&year=${record.year}&amp;month=${record.month}&amp;day=${record.day} ">${record.count}</a></td>
-				</tr>
+			<div class="box-body">
+				<@paginationAdmin paginator=paginator combo=1 />
+				<table class="table table-hover table-condensed">
+					<tr>
+						<th>#i18n{searchstats.manage_searchstats.columnYear}</th>
+						<th>#i18n{searchstats.manage_searchstats.columnMonth}</th>
+						<th>#i18n{searchstats.manage_searchstats.columnDay}</th>
+						<th>#i18n{searchstats.manage_searchstats.columnCount}</th>
+					</tr>
+					<#list records_list as record>
+					<tr>
+						<td><a href="jsp/admin/plugins/searchstats/ManageSearchStats.jsp?action=view&year=${record.year} ">${record.year}</a></td>
+						<td><a href="jsp/admin/plugins/searchstats/ManageSearchStats.jsp?action=view&year=${record.year}&amp;month=${record.month} ">${record.month}</a></td>
+						<td><a href="jsp/admin/plugins/searchstats/ManageSearchStats.jsp?action=view&year=${record.year}&amp;month=${record.month}&amp;day=${record.day} ">${record.day}</a></td>
+						<td><a href="jsp/admin/plugins/searchstats/ManageSearchStats.jsp?action=view&year=${record.year}&amp;month=${record.month}&amp;day=${record.day} ">${record.count}</a></td>
+					</tr>
 				</#list>
-			</table>
-			<#if display_details>
+				</table>
+				<#if display_details>
 				<h3>#i18n{searchstats.manage_searchstats.titleDetails} : ${detail_date}</h3>
 				<div class="row">
 					<div class="col-xs-12 col-sm-4 col-md-4">
@@ -54,8 +54,8 @@
 										<td>${term.term}</td>
 										<td>${term.count}</td>
 									</tr>
-									</#list>
-								</table> 
+								</#list>
+								</table>
 							</div>
 						</div>
 					</div>
@@ -64,32 +64,32 @@
 							<div class="box-header">
 								<h3>Liste des recherches</h3>
 							</div>
-							<div class="box-body">	
+							<div class="box-body">
 								<table class="table table-hover table-condensed">
-								<tr>
-									<th>#i18n{searchstats.manage_searchstats.columnYear}</th>
-									<th>#i18n{searchstats.manage_searchstats.columnMonth}</th>
-									<th>#i18n{searchstats.manage_searchstats.columnDay}</th>
-									<th>#i18n{searchstats.manage_searchstats.columnHour}</th>
-									<th>#i18n{searchstats.manage_searchstats.columnTerms}</th>
-								</tr>
-								<#list queries_list as query>
-								<tr>
-									<td>${query.year}</td>
-									<td>${query.month}</td>
-									<td>${query.day}</td>
-									<td>${query.hour}</td>
-									<td><#if query.query??>${query.query}</#if></td>
-								</tr>
+									<tr>
+										<th>#i18n{searchstats.manage_searchstats.columnYear}</th>
+										<th>#i18n{searchstats.manage_searchstats.columnMonth}</th>
+										<th>#i18n{searchstats.manage_searchstats.columnDay}</th>
+										<th>#i18n{searchstats.manage_searchstats.columnHour}</th>
+										<th>#i18n{searchstats.manage_searchstats.columnTerms}</th>
+									</tr>
+									<#list queries_list as query>
+									<tr>
+										<td>${query.year}</td>
+										<td>${query.month}</td>
+										<td>${query.day}</td>
+										<td>${query.hour}</td>
+										<td><#if query.query??>${query.query}</#if></td>
+									</tr>
 								</#list>
-								</table> 
+								</table>
 							</div>
 						</div>
 					</div>
 				</div>
 			</#if>
-			</div>
 		</div>
 	</div>
+</div>
 </div>
 
